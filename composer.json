@@ -1,6 +1,7 @@
 {
-  "name": "tatarysh/soap_ceidg",
-  "type": "metapackage",
+  "name": "tatarysh/soap-ceidg",
+  "type": "library",
+  "description": "The purpose of this package is to get company data from the CEIDG database using their public API.",
   "license": "MIT",
   "authors": [
     {
