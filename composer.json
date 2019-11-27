@@ -1,0 +1,33 @@
+{
+  "name": "tatarysh/soap_ceidg",
+  "type": "metapackage",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Maciej Kozłowski",
+      "email": "maciej@rysh.pl"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "TataRysh\\Ceidg\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "ext-soap": "*",
+    "phpro/soap-client": "^1.0"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master",
+    "zendframework/zend-code": "^3.1.0",
+    "phpunit/phpunit": "^8.4",
+    "symfony/var-dumper": "^5.0"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
