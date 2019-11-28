@@ -21,6 +21,7 @@
   },
   "require": {
     "ext-soap": "*",
+    "ext-simplexml": "*",
     "phpro/soap-client": "^1.0"
   },
   "require-dev": {

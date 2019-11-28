@@ -2,12 +2,10 @@
 
 namespace TataRysh\Ceidg\Type;
 
-use Phpro\SoapClient\Type\ResultInterface;
-
 /**
  * Class GetIDResponse
  */
-class GetIDResponse implements ResultInterface
+class GetIDResponse extends GetResponse
 {
     /**
      * @var string
@@ -20,5 +18,13 @@ class GetIDResponse implements ResultInterface
     public function getGetIDResult(): string
     {
         return $this->GetIDResult;
+    }
+
+    /**
+     * @return string
+     */
+    public function getResponse(): string
+    {
+        return $this->getGetIDResult();
     }
 }

@@ -2,12 +2,10 @@
 
 namespace TataRysh\Ceidg\Type;
 
-use Phpro\SoapClient\Type\ResultInterface;
-
 /**
  * Class GetMigrationData201901Response
  */
-class GetMigrationData201901Response implements ResultInterface
+class GetMigrationData201901Response extends GetResponse
 {
     /**
      * @var string
@@ -17,20 +15,16 @@ class GetMigrationData201901Response implements ResultInterface
     /**
      * @return string
      */
-    public function getGetMigrationData201901Result()
+    public function getGetMigrationData201901Result(): string
     {
         return $this->GetMigrationData201901Result;
     }
 
     /**
-     * @param  string $GetMigrationData201901Result
-     * @return GetMigrationData201901Response
+     * @return string
      */
-    public function withGetMigrationData201901Result($GetMigrationData201901Result)
+    public function getResponse(): string
     {
-        $new = clone $this;
-        $new->GetMigrationData201901Result = $GetMigrationData201901Result;
-
-        return $new;
+        return $this->getGetMigrationData201901Result();
     }
 }
