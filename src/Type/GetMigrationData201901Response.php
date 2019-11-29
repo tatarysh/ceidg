@@ -23,7 +23,7 @@ class GetMigrationData201901Response extends GetResponse
     /**
      * @return string
      */
-    public function getResponse(): string
+    public function toRaw(): string
     {
         return $this->getGetMigrationData201901Result();
     }

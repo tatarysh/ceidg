@@ -13,14 +13,14 @@ abstract class GetResponse implements ResultInterface
     /**
      * @return string
      */
-    abstract public function getResponse(): string;
+    abstract public function toRaw(): string;
 
     /**
      * @return SimpleXMLElement
      */
     public function toXml(): SimpleXMLElement
     {
-        return simplexml_load_string($this->getResponse());
+        return simplexml_load_string($this->toRaw());
     }
 
     /**
@@ -32,16 +32,16 @@ abstract class GetResponse implements ResultInterface
     }
 
     /**
-     * @param  SimpleXMLElement  $xml
+     * @param $xml
      *
      * @return array
      */
-    private function xml2array(SimpleXMLElement $xml): array
+    private function xml2array($xml): array
     {
         $array = [];
 
         foreach ((array)$xml as $index => $node) {
-            $array[$index] = (is_object($node)) ? $this->xml2array($node) : $node;
+            $array[$index] = is_string($node) ? $node : $this->xml2array($node);
         }
 
         return $array;

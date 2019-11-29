@@ -23,7 +23,7 @@ class GetIDResponse extends GetResponse
     /**
      * @return string
      */
-    public function getResponse(): string
+    public function toRaw(): string
     {
         return $this->getGetIDResult();
     }
