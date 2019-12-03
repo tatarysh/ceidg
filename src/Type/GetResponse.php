@@ -4,6 +4,7 @@ namespace TataRysh\Ceidg\Type;
 
 use Phpro\SoapClient\Type\ResultInterface;
 use SimpleXMLElement;
+use TataRysh\Ceidg\Exceptions\InvalidXmlException;
 
 /**
  * Class GetResponse
@@ -11,39 +12,24 @@ use SimpleXMLElement;
 abstract class GetResponse implements ResultInterface
 {
     /**
-     * @return string
+     * @return string|null
      */
-    abstract public function toRaw(): string;
+    abstract public function toRaw(): ?string;
 
     /**
      * @return SimpleXMLElement
+     * @throws InvalidXmlException
      */
     public function toXml(): SimpleXMLElement
     {
-        return simplexml_load_string($this->toRaw());
-    }
+        libxml_use_internal_errors(true);
 
-    /**
-     * @return array
-     */
-    public function toArray(): array
-    {
-        return $this->xml2array($this->toXml());
-    }
+        $xml = simplexml_load_string($this->toRaw());
 
-    /**
-     * @param $xml
-     *
-     * @return array
-     */
-    private function xml2array($xml): array
-    {
-        $array = [];
-
-        foreach ((array)$xml as $index => $node) {
-            $array[$index] = is_string($node) ? $node : $this->xml2array($node);
+        if ($xml instanceof SimpleXMLElement) {
+            return $xml;
         }
 
-        return $array;
+        throw new InvalidXmlException('XML could not be parsed. Response is invalid.');
     }
 }
